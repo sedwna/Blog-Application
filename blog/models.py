@@ -23,7 +23,7 @@ class Post(models.Model):
     description = models.TextField()
     slug = models.SlugField(max_length=100)
     # date
-    published = models.DateTimeField(default=timezone.now)
+    publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     # choice fields
@@ -33,8 +33,8 @@ class Post(models.Model):
     published = PublishedManager()
 
     class Meta:
-        ordering = ['-published']
-        indexes = [models.Index(fields=['-published'])]
+        ordering = ['-publish']
+        indexes = [models.Index(fields=['-publish'])]
 
     def __str__(self):
         return self.title
